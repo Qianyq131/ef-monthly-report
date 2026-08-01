@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>EF 成人英语月报 · 2026-07</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+          background:#f5f6fa; color:#333; padding:16px 24px; }
+  .header { background: linear-gradient(135deg,#c02828 0%,#e04848 100%); color:#fff;
+             padding:24px 28px; border-radius:12px; margin-bottom:20px;
+             box-shadow:0 4px 16px rgba(192,40,40,0.2); }
+  .header h1 { font-size:22px; margin-bottom:4px; }
+  .header .sub { font-size:13px; opacity:0.9; }
+  .header .meta { font-size:12px; opacity:0.85; margin-top:8px; }
+  .section { background:#fff; border-radius:12px; padding:20px 24px; margin-bottom:18px;
+              box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+  .section h2 { font-size:17px; color:#c02828; margin-bottom:14px; padding-bottom:8px;
+                 border-bottom:2px solid #f5e6e6; display:flex; align-items:center; justify-content:space-between; }
+  .section h3 { font-size:14px; color:#555; margin:12px 0 8px 0; }
+  .btn { background:#c02828; color:#fff; padding:6px 14px; border-radius:6px;
+          text-decoration:none; font-size:12px; }
+  .btn:hover { background:#a02020; }
+  .data-table { width:100%; border-collapse:collapse; font-size:12px; }
+  .data-table th { background:#faf3f3; color:#c02828; padding:8px 6px; text-align:center;
+                    border-bottom:2px solid #e5cccc; font-weight:600; white-space:nowrap; }
+  .data-table td { padding:6px; border-bottom:1px solid #f0f0f0; text-align:center; white-space:nowrap; }
+  .data-table td.num { text-align:right; font-variant-numeric:tabular-nums; }
+  .data-table tr:hover { background:#faf9f9; }
+  .chart-container { height:340px; margin:12px 0; }
+  .chart-container-sov { height:280px; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+  .kpi-card { text-align:center; padding:14px; background:#faf3f3; border-radius:8px; }
+  .kpi-card .label { font-size:12px; color:#888; margin-bottom:6px; }
+  .kpi-card .val { font-size:22px; color:#c02828; font-weight:600; }
+  .kpi-card .rank { font-size:11px; color:#666; margin-top:4px; }
+  .tab-buttons { display:flex; gap:8px; margin-bottom:12px; }
+  .tab-btn { background:#eee; color:#666; padding:6px 14px; border-radius:6px;
+              cursor:pointer; font-size:12px; border:none; }
+  .tab-btn.active { background:#c02828; color:#fff; }
+  .tab-content { display:none; }
+  .tab-content.active { display:block; }
+  .insight-box { background:#fffbeb; border-left:4px solid #f5b942; padding:10px 14px;
+                  border-radius:6px; margin:8px 0 14px 0; font-size:13px; line-height:1.7; }
+  .insight-box b { color:#c02828; }
+  .empty-notice { background:#f5f5f5; border:1px dashed #bbb; padding:24px; text-align:center;
+                   color:#888; border-radius:6px; margin:12px 0; font-size:13px; }
+  .warn { color:#c02828; font-weight:600; }
+  .footer { text-align:center; color:#999; font-size:11px; padding:16px 0; }
+  .table-wrap { overflow-x:auto; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📊 EF 成人英语月度报告 · 客户版 · 2026-07</h1>
+  <div class="sub">私信效率 · 消耗基建 · 竞品 SOV/SOC · 搜索趋势</div>
+  <div class="meta">生成时间：2026-08-01 03:25:48 · 数据口径：英孚·成人英语（brandtag）· SOV/SOC 为竞价词广告占比口径</div>
+</div>
+
+<!-- 1. 私信数据 -->
+<div class="section">
+  <h2>1. 私信效率数据 · 2026-07
+    <a class="btn" href="dm_data_2026-07.xlsx" download target="_blank">📥 下载 xlsx（双 sheet）</a>
+  </h2>
+  <div class="insight-box">💡 2026-07 EF 系全账户共获得私信留资 <b>15,180</b> 条，平均留资成本 <b>742.92元</b></div>
+  <div class="tab-buttons">
+    <button class="tab-btn active" onclick="switchTab(this,'priv-unlim')">不限优化目标</button>
+    <button class="tab-btn" onclick="switchTab(this,'priv-lim')">限制优化目标（私信留资/咨询/开口）</button>
+  </div>
+  <div id="priv-unlim" class="tab-content active">
+    <div class="table-wrap"><table class="data-table">
+<thead><tr><th>广告主名称</th><th>日期</th><th>15s首响率</th><th>30s回复率</th><th>1min回复率</th><th>平均回复时长(分)-新</th><th>私信咨询数</th><th>私信开口数</th><th>私信留资数</th><th>进线开口率</th><th>开口留资率</th><th>进线留资率</th><th>私信留资成本</th><th>CTR</th></tr></thead>
+<tbody>
+<tr><td>总计</td><td></td><td class="num">96.70%</td><td class="num">99.73%</td><td class="num">99.93%</td><td class="num">0.42</td><td class="num">23,694</td><td class="num">17,790</td><td class="num">8,124</td><td class="num">75.08%</td><td class="num">45.67%</td><td class="num">34.29%</td><td class="num">891.75</td><td class="num">2.60%</td></tr>
+<tr><td>EF成人英语课程咨询 - 小F</td><td>2026-07</td><td class="num">97.33%</td><td class="num">99.82%</td><td class="num">99.86%</td><td class="num">0.39</td><td class="num">12,689</td><td class="num">9,571</td><td class="num">4,473</td><td class="num">75.43%</td><td class="num">46.73%</td><td class="num">35.25%</td><td class="num">787.36</td><td class="num">2.24%</td></tr>
+<tr><td>EF成人英语培训</td><td>2026-07</td><td class="num">96.80%</td><td class="num">103.95%</td><td class="num">105.22%</td><td class="num">1.98</td><td class="num">2,150</td><td class="num">1,221</td><td class="num">554</td><td class="num">56.79%</td><td class="num">45.37%</td><td class="num">25.77%</td><td class="num">1,041.50</td><td class="num">4.14%</td></tr>
+<tr><td>EF成人英语课程咨询 - 小E</td><td>2026-07</td><td class="num">95.86%</td><td class="num">99.65%</td><td class="num">99.70%</td><td class="num">0.06</td><td class="num">8,804</td><td class="num">6,951</td><td class="num">3,071</td><td class="num">78.95%</td><td class="num">44.18%</td><td class="num">34.88%</td><td class="num">1,020.24</td><td class="num">2.61%</td></tr>
+<tr><td>EF成人英语广东中心</td><td>2026-07</td><td class="num">83.33%</td><td class="num">68.54%</td><td class="num">77.00%</td><td class="num">10.19</td><td class="num">51</td><td class="num">47</td><td class="num">26</td><td class="num">92.16%</td><td class="num">55.32%</td><td class="num">50.98%</td><td class="num">485.02</td><td class="num">3.49%</td></tr>
+</tbody></table></div>
+    <p style="font-size:11px;color:#888;margin-top:8px;">数据源：<a href="https://redbi.devops.xiaohongshu.com/analysis/edit?projectId=4&analysisId=67797873" target="_blank">RedBI</a></p>
+  </div>
+  <div id="priv-lim" class="tab-content">
+    <div class="table-wrap"><table class="data-table">
+<thead><tr><th>广告主名称</th><th>15s首响率</th><th>30s回复率</th><th>1min回复率</th><th>平均回复时长(分)-新</th><th>私信咨询数</th><th>私信开口数</th><th>私信留资数</th><th>进线开口率</th><th>开口留资率</th><th>进线留资率</th><th>私信留资成本</th><th>CTR</th></tr></thead>
+<tbody>
+<tr><td>总计</td><td class="num">96.63%</td><td class="num">100.04%</td><td class="num">100.24%</td><td class="num">0.44</td><td class="num">21,730</td><td class="num">16,104</td><td class="num">7,590</td><td class="num">74.11%</td><td class="num">47.13%</td><td class="num">34.93%</td><td class="num">742.92</td><td class="num">-</td></tr>
+<tr><td>EF成人英语课程咨询 - 小F</td><td class="num">97.33%</td><td class="num">99.82%</td><td class="num">99.86%</td><td class="num">0.39</td><td class="num">12,689</td><td class="num">9,571</td><td class="num">4,473</td><td class="num">75.43%</td><td class="num">46.73%</td><td class="num">35.25%</td><td class="num">787.36</td><td class="num">2.24%</td></tr>
+<tr><td>EF成人英语课程咨询 - 小E</td><td class="num">95.45%</td><td class="num">99.67%</td><td class="num">99.74%</td><td class="num">0.06</td><td class="num">6,990</td><td class="num">5,392</td><td class="num">2,538</td><td class="num">77.14%</td><td class="num">47.07%</td><td class="num">36.31%</td><td class="num">678.22</td><td class="num">2.34%</td></tr>
+<tr><td>EF成人英语培训</td><td class="num">96.71%</td><td class="num">103.56%</td><td class="num">105.01%</td><td class="num">2.24</td><td class="num">2,000</td><td class="num">1,094</td><td class="num">553</td><td class="num">54.70%</td><td class="num">50.55%</td><td class="num">27.65%</td><td class="num">692.58</td><td class="num">3.19%</td></tr>
+<tr><td>EF成人英语广东中心</td><td class="num">83.33%</td><td class="num">68.54%</td><td class="num">77.00%</td><td class="num">10.19</td><td class="num">51</td><td class="num">47</td><td class="num">26</td><td class="num">92.16%</td><td class="num">55.32%</td><td class="num">50.98%</td><td class="num">485.02</td><td class="num">3.49%</td></tr>
+</tbody></table></div>
+    <p style="font-size:11px;color:#888;margin-top:8px;">数据源：<a href="https://redbi.devops.xiaohongshu.com/analysis/edit?projectId=4&analysisId=67797946" target="_blank">RedBI</a> | 优化目标限：私信留资量/咨询量/开口量</p>
+  </div>
+</div>
+
+<!-- 2. 整体&代理数据 -->
+<div class="section">
+  <h2>2. 整体 &amp; 代理数据 · 2026-07</h2>
+  <div class="insight-box">💡 2026-07 整体消耗 <b>6,870,507.35元</b>；日均私信开口成本 <b>336.33元</b>、留资成本 <b>735.06元</b>；代理格局：<b>叁柒 48%</b> / 知定堂 44% / 惟沃 7%</div>
+
+  <h3>2.1 整体消耗与成本趋势</h3>
+  <div id="chart-overall" class="chart-container"></div>
+
+  <h3>2.2 代理数据对比</h3>
+  <div class="table-wrap"><table class="data-table"><thead><tr>
+<th>代理商名称</th>
+<th>现金消耗</th>
+<th>搜索消耗</th>
+<th>信息流消耗</th>
+<th>视频内流消耗</th>
+<th>CPM2</th>
+<th>竞价广告CTR</th>
+<th>表单提交数-不限制优化目标</th>
+<th>表单提交成本</th>
+<th>私信进线人数</th>
+<th>私信开口量</th>
+<th>私信开口成本（不限制优化目标）</th>
+<th>私信留资量(广告)</th>
+<th>私信留资成本（不限制优化目标）</th>
+<th>在投计划数</th>
+</tr></thead><tbody>
+<tr>
+<td>总计</td>
+<td class="num">6,870,507.35</td>
+<td class="num">2,526,600.36</td>
+<td class="num">3,671,703.14</td>
+<td class="num">672,203.86</td>
+<td class="num">136.89</td>
+<td class="num">2.00%</td>
+<td class="num">1,770</td>
+<td class="num">722.51</td>
+<td class="num">23,748</td>
+<td class="num">17,819</td>
+<td class="num">335.49</td>
+<td class="num">8,132</td>
+<td class="num">734.34</td>
+<td class="num">768</td>
+</tr>
+<tr>
+<td>深圳市叁柒无限网络科技有限公司</td>
+<td class="num">3,315,676.47</td>
+<td class="num">1,396,703.13</td>
+<td class="num">1,598,924.16</td>
+<td class="num">320,049.18</td>
+<td class="num">161.22</td>
+<td class="num">1.75%</td>
+<td class="num">0</td>
+<td class="num">-</td>
+<td class="num">12,708</td>
+<td class="num">9,588</td>
+<td class="num">368.12</td>
+<td class="num">4,477</td>
+<td class="num">787.36</td>
+<td class="num">231</td>
+</tr>
+<tr>
+<td>知定堂文化传媒（上海）有限公司</td>
+<td class="num">3,052,906.81</td>
+<td class="num">989,975.60</td>
+<td class="num">1,776,576.97</td>
+<td class="num">286,354.24</td>
+<td class="num">121.42</td>
+<td class="num">2.05%</td>
+<td class="num">1,554</td>
+<td class="num">714.32</td>
+<td class="num">8,981</td>
+<td class="num">7,076</td>
+<td class="num">294.61</td>
+<td class="num">3,131</td>
+<td class="num">665.25</td>
+<td class="num">320</td>
+</tr>
+<tr>
+<td>成都辰木宸艺科技有限公司</td>
+<td class="num">501,924.07</td>
+<td class="num">139,921.62</td>
+<td class="num">296,202.01</td>
+<td class="num">65,800.44</td>
+<td class="num">111.27</td>
+<td class="num">2.93%</td>
+<td class="num">216</td>
+<td class="num">781.44</td>
+<td class="num">2,059</td>
+<td class="num">1,155</td>
+<td class="num">315.13</td>
+<td class="num">524</td>
+<td class="num">694.02</td>
+<td class="num">217</td>
+</tr>
+</tbody></table></div>
+  <p style="font-size:11px;color:#888;margin-top:8px;">数据源：<a href="https://redbi.devops.xiaohongshu.com/analysis/edit?projectId=4&analysisId=67798019" target="_blank">RedBI</a></p>
+
+  <h3 style="margin-top:20px;">2.3 三代理消耗趋势对比（三七 / 知定 / 惟沃，y 轴已统一）</h3>
+  <div class="grid-3">
+    <div><h3 style="text-align:center;">叁柒</h3><div id="chart-sanqi" class="chart-container"></div></div>
+    <div><h3 style="text-align:center;">知定堂</h3><div id="chart-zhiding" class="chart-container"></div></div>
+    <div><h3 style="text-align:center;">惟沃</h3><div id="chart-weiwo" class="chart-container"></div></div>
+  </div>
+</div>
+
+<!-- 3. SOV/SOC -->
+<div class="section">
+  <h2>3. SOV / SOC 竞品排名 · 2026-07</h2>
+  <div class="insight-box">💡 品牌词 SOV <b>99.6%</b>（第 1，环比 +2.5%）&amp; 行业词 <b>66.5%</b>（第 1，环比 +19.9%），品牌场护城河扎实；<span class='warn'>竞品词仅 10.1%（第 3，环比 +30.9%），第 1 名 流利说 占 58.0%，需系统防守</span></div>
+
+  <div class="grid-3">
+    <div>
+      <h3>📌 品牌词</h3>
+      <div class="kpi-card">
+        <div class="label">EF SOV / SOC</div>
+        <div class="val">99.6% / 99.3%</div>
+        <div class="rank">品牌排名 第 1 · SOV 环比 +2.5%</div>
+      </div>
+      <div id="chart-sov-brand" class="chart-container-sov chart-container"></div>
+    </div>
+    <div>
+      <h3>📌 行业词</h3>
+      <div class="kpi-card">
+        <div class="label">EF SOV / SOC</div>
+        <div class="val">66.5% / 51.3%</div>
+        <div class="rank">品牌排名 第 1 · SOV 环比 +19.9%</div>
+      </div>
+      <div id="chart-sov-industry" class="chart-container-sov chart-container"></div>
+    </div>
+    <div>
+      <h3>📌 竞品词 <span class="warn">（关注！）</span></h3>
+      <div class="kpi-card">
+        <div class="label">EF SOV / SOC</div>
+        <div class="val">10.1% / 4.2%</div>
+        <div class="rank warn">品牌排名 第 3 · SOV 环比 +30.9% | 流利说 占 58.0%</div>
+      </div>
+      <div id="chart-sov-compet" class="chart-container-sov chart-container"></div>
+    </div>
+  </div>
+
+  <p style="font-size:11px;color:#888;margin-top:8px;">
+    数据源：<a href="https://redbi.devops.xiaohongshu.com/analysis/edit?projectId=4&analysisId=67798145" target="_blank">品牌词</a> |
+    <a href="https://redbi.devops.xiaohongshu.com/analysis/edit?projectId=4&analysisId=67798176" target="_blank">行业词</a> |
+    <a href="https://redbi.devops.xiaohongshu.com/analysis/edit?projectId=4&analysisId=67798209" target="_blank">竞品词</a>
+    ｜口径：BT 维度直接聚合（analysisId=65927527）· 环比为上一同长度周期 · 坐标轴数值已隐藏（脱敏）
+  </p>
+</div>
+
+<!-- 4. 搜索趋势 -->
+<div class="section">
+  <h2>4. 成人英语搜索趋势 · 近 365 天</h2>
+  <div class="insight-box">💡 EF 品牌搜索稳居竞品第 1，周均领先 <b>3-4 倍</b> 于流利说/Albert；近 365 天走势整体平稳</div>
+
+  <h3>4.1 EF 品牌搜索趋势（按周）</h3>
+  <div id="chart-ef-search" class="chart-container"></div>
+
+  <h3>4.2 主要竞品搜索趋势对比（按周）</h3>
+  <div id="chart-compet-search" class="chart-container" style="height:380px;"></div>
+
+  <p style="font-size:11px;color:#888;margin-top:8px;">
+    数据源：<a href="https://redbi.devops.xiaohongshu.com/analysis/edit?projectId=4&analysisId=65416431" target="_blank">EF 搜索趋势</a> |
+    <a href="https://redbi.devops.xiaohongshu.com/analysis/edit?projectId=4&analysisId=65416503" target="_blank">竞品搜索指数</a>
+  </p>
+</div>
+
+<div class="footer">
+  EF 成人英语月度报告 · 客户版 · 2026-07 | 每月 1 日 11:00 自动更新<br>
+  数据源：小红书 RedBI · 生成时间：2026-08-01 03:25:48
+</div>
+
+<script>
+function switchTab(btn, id) {
+  const parent = btn.closest('.section');
+  parent.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  parent.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+
+// 千分位格式化 (成本消耗留 2 位)
+function fmt(v, digits) {
+  if (v === null || v === undefined || v === '') return '-';
+  const n = Number(v);
+  if (isNaN(n)) return v;
+  const d = digits === undefined ? 2 : digits;
+  return n.toLocaleString('zh-CN', {minimumFractionDigits:d, maximumFractionDigits:d});
+}
+
+// === 1. 整体消耗趋势（消耗轴展示，成本轴显示） ===
+echarts.init(document.getElementById('chart-overall')).setOption({
+  tooltip:{
+    trigger:'axis',
+    formatter:function(params){
+      let s = params[0].axisValueLabel + '<br>';
+      params.forEach(p=>{
+        s += p.marker + p.seriesName + ': ' + fmt(p.value, 2) + ' 元<br>';
+      });
+      return s;
+    }
+  },
+  legend:{data:['现金消耗','私信开口成本','私信留资成本','表单提交成本'],top:0},
+  grid:{left:'6%',right:'6%',bottom:'8%',top:'12%',containLabel:true},
+  xAxis:{type:'category',data:["2026-07-01", "2026-07-02", "2026-07-03", "2026-07-04", "2026-07-05", "2026-07-06", "2026-07-07", "2026-07-08", "2026-07-09", "2026-07-10", "2026-07-11", "2026-07-12", "2026-07-13", "2026-07-14", "2026-07-15", "2026-07-16", "2026-07-17", "2026-07-18", "2026-07-19", "2026-07-20", "2026-07-21", "2026-07-22", "2026-07-23", "2026-07-24", "2026-07-25", "2026-07-26", "2026-07-27", "2026-07-28", "2026-07-29", "2026-07-30", "2026-07-31"],axisLabel:{fontSize:10,interval:2}},
+  yAxis:[
+    {type:'value',name:'消耗(元)',nameTextStyle:{fontSize:10},axisLabel:{formatter:v=>{if(v>=10000)return (v/10000).toFixed(1)+'万';return v.toFixed(0);}}},
+    {type:'value',name:'成本(元)',nameTextStyle:{fontSize:10},axisLabel:{formatter:'{value}'}}
+  ],
+  series:[
+    {name:'现金消耗',type:'bar',yAxisIndex:0,data:[272714.11, 251026.88, 266140.35, 230740.52, 255446.24, 274541.4, 252032.44, 251309.35, 222739.16, 208118.55, 217660.27, 219130.48, 229904.83, 236404.4, 180286.69, 174734.32, 191739.07, 164930.59, 178649.94, 210112.84, 194553.87, 192201.71, 213559.53, 214967.19, 200700.79, 191486.33, 230319.79, 232774.71, 242786.24, 246718.56, 222076.2],itemStyle:{color:'#c02828'}},
+    {name:'私信开口成本',type:'line',yAxisIndex:1,data:[323.56, 314.66, 335.8, 345.97, 344.07, 350.08, 351.54, 341.56, 323.11, 357.06, 331.23, 342.9, 320.34, 341.16, 354.12, 355.53, 352.39, 337.65, 347.71, 373.99, 330.94, 343.74, 336.09, 337.82, 328.07, 274.57, 343.78, 308.97, 339.59, 330.73, 307.6],smooth:true,itemStyle:{color:'#f5a742'}},
+    {name:'私信留资成本',type:'line',yAxisIndex:1,data:[729.04, 748.56, 733.82, 733.79, 773.84, 741.14, 743.14, 725.07, 741.41, 726.29, 752.67, 703.14, 756.32, 745.22, 727.39, 719.13, 766.19, 761.87, 738.68, 767.51, 704.87, 754.2, 690.78, 741.59, 720.57, 739.74, 713.07, 697.21, 699.54, 741.33, 749.7],smooth:true,itemStyle:{color:'#4285f4'}},
+    {name:'表单提交成本',type:'line',yAxisIndex:1,data:[749.09, 714.61, 723.98, 730.46, 766.3, 694.6, 664.62, 645.88, 734.5, 831.71, 707.74, 678.27, 747.95, 739.57, 750.12, 627.7, 778.13, 700.81, 678.3, 722.44, 622.31, 696.07, 702.42, 819.54, 728.66, 761.27, 696.35, 802.47, 906.86, 707.52, 806.68],smooth:true,itemStyle:{color:'#34a853'}}
+  ]
+});
+
+// === 2. 三代理消耗趋势 (y 轴统一) ===
+const PROXY_Y_COST = 150382.672;
+const PROXY_Y_MSGCOST = 2493.2115;
+
+function drawProxyTrend(id, data) {
+  echarts.init(document.getElementById(id)).setOption({
+    tooltip:{
+      trigger:'axis',
+      formatter:function(params){
+        let s = params[0].axisValueLabel + '<br>';
+        params.forEach(p=>{
+          if (p.seriesName === '现金消耗' || p.seriesName === '私信留资成本') {
+            s += p.marker + p.seriesName + ': ' + fmt(p.value, 2) + ' 元<br>';
+          } else {
+            s += p.marker + p.seriesName + ': ' + p.value + '<br>';
+          }
+        });
+        return s;
+      }
+    },
+    legend:{data:['现金消耗','私信留资成本','日均在投计划'],top:0,textStyle:{fontSize:11}},
+    grid:{left:'8%',right:'12%',bottom:'8%',top:'14%',containLabel:true},
+    xAxis:{type:'category',data:data.dates,axisLabel:{fontSize:9,interval:2}},
+    yAxis:[
+      {type:'value',name:'消耗(元)',nameTextStyle:{fontSize:10},max:PROXY_Y_COST,axisLabel:{formatter:v=>{if(v>=10000)return (v/10000).toFixed(1)+'万';return v.toFixed(0);}}},
+      {type:'value',name:'成本(元)',nameTextStyle:{fontSize:10},max:PROXY_Y_MSGCOST,axisLabel:{formatter:'{value}'}}
+    ],
+    series:[
+      {name:'现金消耗',type:'bar',yAxisIndex:0,data:data.cost,itemStyle:{color:'#c02828'}},
+      {name:'私信留资成本',type:'line',yAxisIndex:1,data:data.msg_cost,smooth:true,itemStyle:{color:'#f5a742'}},
+      {name:'日均在投计划',type:'line',yAxisIndex:1,data:data.plans,smooth:true,itemStyle:{color:'#4285f4'}}
+    ]
+  });
+}
+drawProxyTrend('chart-sanqi', {"dates": ["2026-07-01", "2026-07-02", "2026-07-03", "2026-07-04", "2026-07-05", "2026-07-06", "2026-07-07", "2026-07-08", "2026-07-09", "2026-07-10", "2026-07-11", "2026-07-12", "2026-07-13", "2026-07-14", "2026-07-15", "2026-07-16", "2026-07-17", "2026-07-18", "2026-07-19", "2026-07-20", "2026-07-21", "2026-07-22", "2026-07-23", "2026-07-24", "2026-07-25", "2026-07-26", "2026-07-27", "2026-07-28", "2026-07-29", "2026-07-30", "2026-07-31"], "cost": [134259.42, 125362.69, 115148.94, 97848.75, 133226.89, 126085.14, 131411.14, 125300.68, 117627.48, 114788.39, 114553.41, 109091.81, 127659.21, 136711.52, 98681.08, 100086.8, 116966.94, 89804.94, 103186.26, 124050.02, 106114.24, 110241.38, 106889.81, 109996.33, 84558.89, 83736.24, 115166.67, 122357.65, 122560.16, 127187.93, 112506.06], "plans": [151, 139, 144, 141, 146, 141, 146, 145, 147, 152, 142, 140, 150, 151, 142, 143, 143, 139, 140, 139, 130, 126, 131, 128, 130, 125, 131, 139, 130, 136, 142], "notes": [187, 151, 181, 176, 176, 172, 163, 159, 161, 176, 164, 153, 175, 161, 141, 144, 147, 138, 139, 147, 139, 139, 152, 148, 144, 137, 143, 151, 150, 153, 150], "msg_cost": [762.13, 787.4, 772.39, 768.93, 844.07, 798.92, 787.79, 758.73, 822.42, 813.92, 813.84, 769.2, 803.78, 814.99, 766.78, 771.95, 831.25, 796.66, 765.5, 822.48, 769.71, 817.55, 722.73, 781.13, 799.17, 784.14, 768.31, 746.5, 777.13, 800.84, 771.51], "form_cost": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]});
+drawProxyTrend('chart-zhiding', {"dates": ["2026-07-01", "2026-07-02", "2026-07-03", "2026-07-04", "2026-07-05", "2026-07-06", "2026-07-07", "2026-07-08", "2026-07-09", "2026-07-10", "2026-07-11", "2026-07-12", "2026-07-13", "2026-07-14", "2026-07-15", "2026-07-16", "2026-07-17", "2026-07-18", "2026-07-19", "2026-07-20", "2026-07-21", "2026-07-22", "2026-07-23", "2026-07-24", "2026-07-25", "2026-07-26", "2026-07-27", "2026-07-28", "2026-07-29", "2026-07-30", "2026-07-31"], "cost": [122707.21, 110181.87, 126720.32, 107294.23, 97703.61, 126714.03, 98946.37, 123539.65, 102868.44, 94657.58, 104992.69, 110422.09, 107974.58, 101520.44, 83902.5, 81131.04, 82222.03, 83641.59, 83909.37, 93576.5, 88025.96, 84219.57, 109272.47, 109257.46, 118864.74, 106842.44, 112067.83, 112097.21, 116972.29, 112611.92, 106563.93], "plans": [139, 152, 176, 161, 161, 156, 153, 163, 168, 164, 140, 136, 142, 150, 145, 142, 143, 144, 145, 137, 128, 155, 153, 152, 138, 138, 142, 114, 125, 128, 136], "notes": [316, 343, 359, 358, 361, 351, 342, 351, 359, 359, 341, 337, 344, 307, 320, 327, 306, 333, 333, 327, 319, 330, 335, 337, 351, 333, 341, 311, 338, 332, 341], "msg_cost": [685.17, 691.35, 692.04, 700.72, 671.46, 681.17, 659.36, 685.19, 648.42, 610.69, 665.06, 624.5, 699.46, 639.48, 642.29, 624.14, 670.39, 704.83, 707.14, 711.35, 622.3, 666.79, 691.83, 676.56, 652.88, 674.86, 634.39, 642.24, 610.15, 672.74, 697.99], "form_cost": [737.97, 675.52, 709.7, 736.26, 776.15, 696.68, 654.46, 629.37, 738.92, 847.66, 720.76, 670.63, 771.34, 727.81, 758.63, 629.16, 743.28, 692.49, 642.32, 713.55, 593.69, 663.5, 697.58, 796.01, 727.32, 716.58, 704.47, 802.49, 916.55, 703.95, 793.34]});
+drawProxyTrend('chart-weiwo', {"dates": ["2026-07-01", "2026-07-02", "2026-07-03", "2026-07-04", "2026-07-05", "2026-07-06", "2026-07-07", "2026-07-08", "2026-07-09", "2026-07-10", "2026-07-11", "2026-07-12", "2026-07-13", "2026-07-14", "2026-07-15", "2026-07-16", "2026-07-17", "2026-07-18", "2026-07-19", "2026-07-20", "2026-07-21", "2026-07-22", "2026-07-23", "2026-07-24", "2026-07-25", "2026-07-26", "2026-07-27", "2026-07-28", "2026-07-29", "2026-07-30", "2026-07-31"], "cost": [16102.71, 15482.32, 24271.09, 25955.27, 24620.03, 22363.79, 21674.93, 26606.1, 24354.32, 21867.01, 22733.31, 23319.15, 19215.21, 21166.49, 16845.67, 11870.82, 12844.43, 9739.05, 9309.7, 11388.93, 17784.34, 16711.34, 16345.19, 12063.82, 12925.87, 13010.58, 20225.55, 10571.61, 14709.76, 15250.17, 9678.21], "plans": [48, 58, 53, 51, 52, 60, 39, 45, 42, 50, 47, 45, 55, 45, 46, 35, 37, 34, 32, 29, 32, 42, 40, 45, 30, 36, 30, 38, 32, 35, 42], "notes": [77, 63, 69, 71, 69, 68, 60, 66, 67, 66, 72, 68, 76, 77, 74, 77, 79, 75, 66, 57, 64, 77, 77, 86, 75, 81, 69, 86, 82, 75, 75], "msg_cost": [707.14, 766.63, 694.53, 685.55, 716.44, 660.55, 736.68, 654.94, 619.75, 704.56, 703.08, 687.27, 660.91, 669.39, 911.13, 807.3, 717.59, 809.5, 641.41, 504.78, 657.67, 692.56, 513.04, 829.43, 636.4, 872.82, 750.04, 620.38, 751.44, 666.89, 2168.01], "form_cost": [814.4, 1327.03, 816.8, 702.54, 692.48, 671.0, 727.64, 742.74, 713.14, 757.95, 648.2, 717.87, 635.68, 790.51, 713.29, 616.25, 1030.86, 790.18, 2153.35, 787.64, 1070.65, 1380.03, 797.62, 1419.8, 741.3, 1684.93, 640.52, 802.19, 834.22, 723.79, 875.6]});
+
+// === 3. SOV/SOC 横向条形图（保持 % 纵轴，数值本身就是 %，不脱敏） ===
+function drawSovBars(id, data) {
+  const labels = data.labels.slice().reverse();
+  const sov = data.sov.slice().reverse();
+  const soc = data.soc.slice().reverse();
+  echarts.init(document.getElementById(id)).setOption({
+    tooltip:{
+      trigger:'axis', axisPointer:{type:'shadow'},
+      formatter:function(params){
+        return params[0].name + '<br>' +
+          params.map(p=>p.marker+p.seriesName+': '+p.value.toFixed(2)+'%').join('<br>');
+      }
+    },
+    legend:{data:['BT-SOV','BT-SOC'],bottom:0},
+    grid:{left:'2%',right:'8%',bottom:'12%',top:'6%',containLabel:true},
+    xAxis:{type:'value',name:'占比(%)',nameTextStyle:{fontSize:10},axisLabel:{formatter:'{value}%',fontSize:9}},
+    yAxis:{type:'category',data:labels,axisLabel:{fontSize:10,width:120,overflow:'truncate'}},
+    series:[
+      {name:'BT-SOV',type:'bar',data:sov,itemStyle:{color:'#4285f4'}},
+      {name:'BT-SOC',type:'bar',data:soc,itemStyle:{color:'#f5a742'}}
+    ]
+  });
+}
+drawSovBars('chart-sov-brand',{"labels": ["\u82f1\u5b5a\u00b7\u6210\u4eba\u82f1\u8bed", "albert\u82f1\u8bed", "\u540c\u684c\u82f1\u8bed", "LingoAce\u00b7\u82f1\u8bed", "\u82f1\u5b5a\u00b7\u9752\u5c11\u513f", "\u6a59\u5566\u00b7\u82f1\u8bed", "\u65b0\u4e1c\u65b9\u00b7\u5728\u7ebf\u51fa\u56fd", "\u65b0\u822a\u9053", "airclass", "\u65b0\u4e1c\u65b9\u00b7\u56fd\u9645"], "sov": [99.57, 0.11, 0.08, 0.08, 0.07, 0.01, 0.01, 0.01, 0.01, 0.0], "soc": [99.32, 0.15, 0.18, 0.12, 0.09, 0.04, 0.02, 0.01, 0.0, 0.01], "ef": {"rank": 1, "sov": 0.9956817931458323, "soc": 0.9932235517118825, "sov_yoy": 0.02501389011765578, "soc_yoy": 0.04760172789248817, "brandtag": "\u82f1\u5b5a-\u6210\u4eba\u82f1\u8bed-\u8bed\u8a00\u53ca\u7559\u5b66"}});
+drawSovBars('chart-sov-industry',{"labels": ["\u82f1\u5b5a\u00b7\u6210\u4eba\u82f1\u8bed", "\u540c\u684c\u82f1\u8bed", "\u6d41\u5229\u8bf4", "\u65b0\u4e1c\u65b9\u00b7\u5728\u7ebf\u51fa\u56fd", "\u82f1\u91cc\u82f1\u8bed", "\u65b0\u4e1c\u65b9\u00b7\u56fd\u9645", "\u6a59\u5566\u00b7\u82f1\u8bed", "\u5e0c\u671b\u5b66\u00b7\u5c0f\u5b66", "\u65b0\u4e1c\u65b9\u00b7\u5927\u5b66", "\u65b0\u822a\u9053"], "sov": [66.48, 8.54, 4.16, 1.17, 1.11, 1.04, 0.82, 0.65, 0.41, 0.37], "soc": [51.32, 9.78, 7.08, 1.63, 0.59, 1.16, 0.83, 0.58, 0.52, 0.39], "ef": {"rank": 1, "sov": 0.6647751583661113, "soc": 0.5132054038703395, "sov_yoy": 0.1992654751412047, "soc_yoy": 0.12780218089218187, "brandtag": "\u82f1\u5b5a-\u6210\u4eba\u82f1\u8bed-\u8bed\u8a00\u53ca\u7559\u5b66"}});
+drawSovBars('chart-sov-compet',{"labels": ["\u6d41\u5229\u8bf4", "albert\u82f1\u8bed", "\u82f1\u5b5a\u00b7\u6210\u4eba\u82f1\u8bed", "LingoAce\u00b7\u82f1\u8bed", "\u7cd6\u8bf4\u82f1\u8bed", "\u58a8\u5ba2\u65c5\u884c", "\u6a59\u5566\u00b7\u8003\u7814", "\u82f1\u91cc\u82f1\u8bed", "\u7f51\u6613\u6709\u9053\u00b7app\u4e1a\u52a1", "\u540c\u684c\u82f1\u8bed"], "sov": [57.98, 19.41, 10.09, 5.03, 2.4, 1.29, 1.08, 0.9, 0.65, 0.27], "soc": [64.92, 19.34, 4.22, 3.2, 2.3, 1.68, 0.98, 1.68, 0.23, 0.47], "ef": {"rank": 3, "sov": 0.10090372980010723, "soc": 0.0421875, "sov_yoy": 0.3089514697866421, "soc_yoy": 0.04616023936170217, "brandtag": "\u82f1\u5b5a-\u6210\u4eba\u82f1\u8bed-\u8bed\u8a00\u53ca\u7559\u5b66"}});
+
+// === 4. 搜索趋势（纵轴&数值完全脱敏，只展示趋势） ===
+// 内部仍归一化以保持相对趋势准确
+const efMax = Math.max(...[189835.3, 302083.95, 421380.87, 331533.81, 321482.6, 297366.57, 295369.03, 329930.48, 395539.82, 424330.89, 389549.84, 349040.74, 202090.42, 332568.29, 414996.68, 343984.71, 339812.36, 357340.46, 342436.95, 292506.33, 292453.41, 325194.59, 308846.49, 315685.75, 314373.46, 259439.73, 354766.15, 311997.58, 234942.72, 211509.3, 195330.53, 144685.56, 126705.03, 343614.31, 411287.33, 489024.8, 372876.32, 345582.74, 288410.7, 305705.98, 328096.97, 335640.01, 233820.92, 290400.31, 320051.24, 312354.75, 310635.02, 287688.41, 322048.79, 288331.33, 570468.96, 508299.1, 105890.9]);
+const efIndex = [189835.3, 302083.95, 421380.87, 331533.81, 321482.6, 297366.57, 295369.03, 329930.48, 395539.82, 424330.89, 389549.84, 349040.74, 202090.42, 332568.29, 414996.68, 343984.71, 339812.36, 357340.46, 342436.95, 292506.33, 292453.41, 325194.59, 308846.49, 315685.75, 314373.46, 259439.73, 354766.15, 311997.58, 234942.72, 211509.3, 195330.53, 144685.56, 126705.03, 343614.31, 411287.33, 489024.8, 372876.32, 345582.74, 288410.7, 305705.98, 328096.97, 335640.01, 233820.92, 290400.31, 320051.24, 312354.75, 310635.02, 287688.41, 322048.79, 288331.33, 570468.96, 508299.1, 105890.9].map(v => v ? v/efMax*100 : 0);
+
+echarts.init(document.getElementById('chart-ef-search')).setOption({
+  tooltip:{
+    trigger:'axis',
+    formatter:function(params){
+      // 只显示周和线名，不显示任何数值
+      return params[0].axisValueLabel + '<br>' + params.map(p=>p.marker+p.seriesName).join('<br>');
+    }
+  },
+  grid:{left:'3%',right:'6%',bottom:'8%',top:'8%',containLabel:true},
+  xAxis:{type:'category',data:["2025年第28周", "2025年第29周", "2025年第30周", "2025年第31周", "2025年第32周", "2025年第33周", "2025年第34周", "2025年第35周", "2025年第36周", "2025年第37周", "2025年第38周", "2025年第39周", "2025年第40周", "2025年第41周", "2025年第42周", "2025年第43周", "2025年第44周", "2025年第45周", "2025年第46周", "2025年第47周", "2025年第48周", "2025年第49周", "2025年第50周", "2025年第51周", "2025年第52周", "2026年第1周", "2026年第2周", "2026年第3周", "2026年第4周", "2026年第5周", "2026年第6周", "2026年第7周", "2026年第8周", "2026年第9周", "2026年第10周", "2026年第11周", "2026年第12周", "2026年第13周", "2026年第14周", "2026年第15周", "2026年第16周", "2026年第17周", "2026年第18周", "2026年第19周", "2026年第20周", "2026年第21周", "2026年第22周", "2026年第23周", "2026年第24周", "2026年第25周", "2026年第26周", "2026年第27周", "2026年第28周"],axisLabel:{fontSize:9,interval:3}},
+  yAxis:{type:'value',show:false,max:110},
+  series:[{name:'EF 搜索指数',type:'line',data:efIndex,smooth:true,symbol:'none',areaStyle:{color:'rgba(192,40,40,0.15)'},itemStyle:{color:'#c02828'},lineStyle:{width:2}}]
+});
+
+// 竞品：全数据合并归一化
+const competRaw = [[10030.04, 9728.43, 13683.83, 8442.59, 7617.12, 8582.82, 8672.77, 9138.43, 8638.38, 8548.42, 8323.53, 7154.11, 5103.65, 8500.8, 10921.66, 10233.77, 11146.55, 10037.98, 12215.43, 9940.09, 9376.54, 8913.54, 9429.46, 10344.89, 9659.64, 7812.9, 10289.33, 10368.7, 9953.32, 9482.37, 8527.26, 5482.0, 2891.81, 13035.62, 15099.3, 15604.64, 14501.36, 13265.8, 11744.49, 13469.52, 12421.8, 12255.12, 7786.45, 11196.82, 11773.59, 12511.76, 12868.93, 13194.36, 13956.34, 11633.37, 14633.65, 14911.45, 3722.57], [6265.14, 8781.25, 8768.02, 8569.59, 8334.12, 7400.17, 7437.21, 6818.1, 8037.79, 8656.9, 8138.33, 7000.66, 4886.7, 7085.32, 7479.54, 7201.74, 7331.38, 7900.21, 8384.39, 7392.23, 7630.35, 8175.37, 7781.15, 8244.16, 8641.02, 7080.03, 8432.01, 8339.41, 8043.08, 7437.21, 6556.17, 5177.74, 3783.42, 9580.27, 10442.78, 11165.07, 9831.61, 9318.34, 8500.8, 8566.94, 8402.91, 8201.83, 7048.28, 8006.04, 8175.37, 7468.96, 7712.37, 8143.62, 8895.02, 8220.35, 9315.69, 9072.28, 2743.64], [5482.0, 6249.26, 6262.49, 6982.14, 6315.41, 6090.52, 6148.73, 6148.73, 6675.23, 6199.0, 6519.13, 4913.16, null, 4095.62, 5288.86, 4836.43, 6048.19, 6111.69, 5503.16, 5598.41, 5193.61, 5024.28, 4529.53, 5008.41, 4198.81, 3309.83, 3836.34, 4082.39, 4204.1, 3537.37, 2891.81, null, null, 4005.67, 4749.12, 4984.6, 5164.51, 4852.31, 4881.41, 4518.94, 4587.73, 6273.08, 4571.86, 4804.68, 4325.8, 4891.99, 4627.42, 4638.0, 4309.93, 4108.85, 4677.69, 4966.08, null], [1190.59, 1558.35, 1478.97, 1381.08, 1396.96, 1296.42, 1214.4, 1539.83, 1830.86, 2177.45, 2087.5, 1759.42, 1899.65, 2029.29, 1897.0, 1455.16, 1862.61, 2037.23, 2624.59, 2267.41, 2460.55, 2127.18, 2487.01, 2479.07, 2248.89, 1661.53, 2629.88, 2624.59, 2635.17, 2362.66, 1875.84, 1457.81, 711.71, 2325.62, 2677.5, 2473.78, 2627.23, 2672.21, 2542.57, 2558.44, 2902.39, 3055.84, 1754.13, 2238.31, 2172.16, 2166.87, 2309.74, 2934.14, 2889.16, 2158.93, 2098.08, 3000.28, 923.37], [10228.47, 14369.08, 12845.12, 13652.08, 11509.02, 10855.52, 10974.58, 9680.8, 13400.73, 12022.29, 10387.22, 9215.15, 5310.02, 8895.02, 8596.05, 6447.7, 6691.11, 16824.33, 6402.72, 3272.79, 2653.69, 2830.95, 3415.66, 3807.24, 3619.39, 2312.39, 2658.98, 2518.76, 2095.44, 1322.88, 2050.46, 1582.16, 1349.33, 3016.16, 3394.5, 2981.76, 2116.6, 2111.31, 3629.97, 2862.7, 2529.34, 2330.91, 2730.42, 3518.85, 3502.97, 3204.0, 1632.43, 1428.71, 1317.58, 1341.4, 2188.04, 3577.06, 841.35], [1031.84, 1015.97, 1045.07, 894.26, 828.12, 1709.16, 1277.9, 891.62, 1037.13, 1259.38, 1314.94, 902.2, 402.15, 656.15, 859.87, 724.94, 791.08, 788.43, 653.5, 687.9, 661.44, 669.38, 1053.01, 698.48, 555.61, 502.69, 597.94, 642.92, 619.11, 478.88, 624.4, 412.74, null, 2397.05, 1881.13, 1367.85, 1111.22, 1042.43, 1013.32, 867.81, 714.35, 672.02, 574.13, 653.5, 730.23, 621.75, 690.54, 706.42, 968.34, 653.5, 785.79, 761.98, null], [717.0, 926.01, 920.72, 1010.68, 836.06, 865.16, 1111.22, 1344.04, 1243.5, 1187.94, 1084.76, 973.64, 748.75, 1082.11, 849.29, 939.24, 836.06, 830.77, 759.33, 759.33, 772.56, 838.7, 732.87, 735.52, 677.31, 407.45, 703.77, 968.34, 878.39, 791.08, 759.33, 645.56, null, 883.68, 820.18, 822.83, 902.2, 1026.55, 809.6, 666.73, 775.21, 693.19, 420.67, 542.38, 412.74, 420.67, 465.65, 518.57, 767.27, 433.9, 473.59, 507.98, null], [275.16, 407.45, 296.32, 386.28, 275.16, 269.87, 322.78, 365.11, 436.55, 402.15, 370.41, 317.49, 142.87, 230.18, 272.51, 314.84, 312.2, 373.05, 267.22, 211.66, 166.68, 164.04, 248.7, 240.76, 158.75, 161.39, 185.2, 193.14, 174.62, 129.64, 148.16, 127.0, null, 190.49, 187.85, 280.45, 214.31, 119.06, 169.33, 150.81, 161.39, 140.22, 153.45, 100.54, 132.29, 171.97, 206.37, 240.76, 238.12, 134.93, 227.53, 232.83, 68.79]];
+const competFlat = competRaw.flat().filter(v=>v!==null);
+const competMax = Math.max(...competFlat);
+const competIndex = competRaw.map(arr => arr.map(v => v===null?null:v/competMax*100));
+
+echarts.init(document.getElementById('chart-compet-search')).setOption({
+  tooltip:{
+    trigger:'axis',
+    formatter:function(params){
+      // 只显示周和线名，不显示任何数值
+      let s = params[0].axisValueLabel + '<br>';
+      params.forEach(p=>{
+        if (p.value !== null && p.value !== undefined) {
+          s += p.marker + p.seriesName + '<br>';
+        }
+      });
+      return s;
+    }
+  },
+  legend:{data:["EF", "流利说", "Albert", "糖说英语", "吴彦祖", "橙啦英语", "蛋妞英语", "麦迩威"],top:0},
+  grid:{left:'3%',right:'6%',bottom:'8%',top:'12%',containLabel:true},
+  xAxis:{type:'category',data:["2025年第28周", "2025年第29周", "2025年第30周", "2025年第31周", "2025年第32周", "2025年第33周", "2025年第34周", "2025年第35周", "2025年第36周", "2025年第37周", "2025年第38周", "2025年第39周", "2025年第40周", "2025年第41周", "2025年第42周", "2025年第43周", "2025年第44周", "2025年第45周", "2025年第46周", "2025年第47周", "2025年第48周", "2025年第49周", "2025年第50周", "2025年第51周", "2025年第52周", "2026年第1周", "2026年第2周", "2026年第3周", "2026年第4周", "2026年第5周", "2026年第6周", "2026年第7周", "2026年第8周", "2026年第9周", "2026年第10周", "2026年第11周", "2026年第12周", "2026年第13周", "2026年第14周", "2026年第15周", "2026年第16周", "2026年第17周", "2026年第18周", "2026年第19周", "2026年第20周", "2026年第21周", "2026年第22周", "2026年第23周", "2026年第24周", "2026年第25周", "2026年第26周", "2026年第27周", "2026年第28周"],axisLabel:{fontSize:9,interval:3}},
+  yAxis:{type:'value',show:false,max:110},
+  series:[{"name": "EF", "type": "line", "smooth": true, "symbol": "none", "connectNulls": true, "lineStyle": {"width": 2}}, {"name": "流利说", "type": "line", "smooth": true, "symbol": "none", "connectNulls": true, "lineStyle": {"width": 2}}, {"name": "Albert", "type": "line", "smooth": true, "symbol": "none", "connectNulls": true, "lineStyle": {"width": 2}}, {"name": "糖说英语", "type": "line", "smooth": true, "symbol": "none", "connectNulls": true, "lineStyle": {"width": 2}}, {"name": "吴彦祖", "type": "line", "smooth": true, "symbol": "none", "connectNulls": true, "lineStyle": {"width": 2}}, {"name": "橙啦英语", "type": "line", "smooth": true, "symbol": "none", "connectNulls": true, "lineStyle": {"width": 2}}, {"name": "蛋妞英语", "type": "line", "smooth": true, "symbol": "none", "connectNulls": true, "lineStyle": {"width": 2}}, {"name": "麦迩威", "type": "line", "smooth": true, "symbol": "none", "connectNulls": true, "lineStyle": {"width": 2}}].map((s,i)=>({...s,data:competIndex[i]}))
+});
+</script>
+</body>
+</html>
